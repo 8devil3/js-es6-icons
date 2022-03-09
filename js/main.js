@@ -6,13 +6,13 @@ const selectIcon = document.querySelector("#select-icon");
 
 
 uniqueType(); //genero il menu a tendina
-printAll(); //stampo le icone
+printIcons(iconsArr); //stampo le icone
 
 
 //stampa di tutte le icone
-function printAll() {
-    iconsArr.forEach((icon) => {
-        printIcons(icon.name, icon.prefix, icon.color);
+function printIcons(icons) {
+    icons.forEach((icon) => {
+        print(icon.name, icon.prefix, rndmColor());
     });
 }
 
@@ -24,17 +24,15 @@ selectIcon.addEventListener("change", () => {
     main.innerHTML = "";
 
     if (selectIcon.value == "all") {
-        printAll();
+        printIcons(iconsArr);
     } else {
         //filtro i risultati in base alla scelta dell'utente
         iconsSelected = iconsArr.filter((element) => {
             return element.type == selectIcon.value;
         });
 
-        //genero le icone nei loro div
-        iconsSelected.forEach((icon) => {
-            printIcons(icon.name, icon.prefix, icon.color);
-        });
+        //genero le icone
+        printIcons(iconsSelected);
     }
 });
 
@@ -63,10 +61,10 @@ function uniqueType() {
 
 
 //stampa icone nei div
-function printIcons(iconName, iconPrefix) {
+function print(iconName, iconPrefix, iconColor) {
     let iconBox = document.createElement("div");
     iconBox.classList.add("icon-box");
-    iconBox.innerHTML = `<i class="fa-solid ${iconPrefix}${iconName}" style="color: #${rndmColor()}"></i><p class="icon-name">${iconName}</p>`;
+    iconBox.innerHTML = `<i class="fa-solid ${iconPrefix}${iconName}" style="color: #${iconColor}"></i><p class="icon-name">${iconName}</p>`;
     main.appendChild(iconBox);
 }
 
