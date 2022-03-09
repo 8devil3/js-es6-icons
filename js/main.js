@@ -4,8 +4,10 @@ const selectIcon = document.querySelector("#select-icon");
 
 
 
-uniqueType();
-printAll();
+
+uniqueType(); //genero il menu a tendina
+printAll(); //stampo le icone
+
 
 //stampa di tutte le icone
 function printAll() {
@@ -46,8 +48,11 @@ function uniqueType() {
         .filter((element, index, array) => {
             return array.indexOf(element) == index;
         });
-
+    
+    //aggiungo la voce 'all' al menu a tendina
     iconTypesUnique.push("all");
+
+    //ordino alfabeticamente le voci di menu
     iconTypesUnique.sort();
 
     //genero il menu a tendina HTML di type icon
@@ -75,6 +80,8 @@ function selectTypeGen(iconType) {
     selectIcon.appendChild(optIcon);
 }
 
+
+//generazione colore casuale
 function rndmColor() {
     colorHexArr = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
     newColor = [];
