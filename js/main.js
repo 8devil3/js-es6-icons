@@ -61,7 +61,7 @@ function uniqueType() {
 function printIcons(iconName, iconPrefix) {
     let iconBox = document.createElement("div");
     iconBox.classList.add("icon-box");
-    iconBox.innerHTML = `<i class="fa-solid ${iconPrefix}${iconName}" style="color: ${rndmColor()}"></i><p class="icon-name">${iconName}</p>`;
+    iconBox.innerHTML = `<i class="fa-solid ${iconPrefix}${iconName}" style="color: #${rndmColor()}"></i><p class="icon-name">${iconName}</p>`;
     main.appendChild(iconBox);
 }
 
@@ -77,14 +77,14 @@ function selectTypeGen(iconType) {
 
 function rndmColor() {
     colorHexArr = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
+    newColor = [];
+    
+    for (let c = 0; c < 6; c++) {
+        let digit = colorHexArr[Math.floor(Math.random() * colorHexArr.length)];
+        newColor.push(digit);
+    }
 
-    digit_1 = colorHexArr[Math.floor(Math.random() * colorHexArr.length)];
-    digit_2 = colorHexArr[Math.floor(Math.random() * colorHexArr.length)];
-    digit_3 = colorHexArr[Math.floor(Math.random() * colorHexArr.length)];
-    digit_4 = colorHexArr[Math.floor(Math.random() * colorHexArr.length)];
-    digit_5 = colorHexArr[Math.floor(Math.random() * colorHexArr.length)];
-    digit_6 = colorHexArr[Math.floor(Math.random() * colorHexArr.length)];
-
-    return '#' + digit_1 + digit_2 + digit_3 + digit_4 + digit_5 + digit_6;
+    return newColor.join('');
 }
- 
+
+
