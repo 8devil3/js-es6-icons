@@ -10,6 +10,42 @@ body {
     font-family: 'Segoe UI', Helvetica, sans-serif;
 }
 
+
+header {
+    display: flex;
+    flex-direction: column;
+}
+
+header .logo {
+    height: 4rem;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+header .logo img{
+    display: block;
+}
+
+header .filter-wrap {
+    background-color: #29B1DD;
+    height: 4rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header label {
+    margin-right: 0.5rem;
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
 main {
     display: flex;
     flex-wrap: wrap;
