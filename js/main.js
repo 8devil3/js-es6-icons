@@ -1,6 +1,7 @@
 const main = document.querySelector("main");
 const header = document.querySelector("header");
 const selectIcon = document.querySelector("#select-icon");
+const selectColor = document.querySelector("#select-color");
 
 
 
@@ -11,14 +12,26 @@ printIcons(iconsArr); //stampo le icone
 
 //stampa di tutte le icone
 function printIcons(icons) {
-    icons.forEach((icon) => {
-        print(icon.name, icon.prefix, rndmColor());
-    });
+
+    if (selectColor.value == 'default'){
+        icons.forEach((element) => {
+            print(element.name, element.prefix, element.color);
+        });
+    } else {
+        icons.forEach((element) => {
+            print(element.name, element.prefix, rndmColor());
+        });
+    }
 }
 
 
 //filtro sul menu a tendina
-selectIcon.addEventListener("change", () => {
+selectIcon.addEventListener("change", filterResults);
+
+selectColor.addEventListener("change", filterResults);
+
+//filtro dei risultati
+function filterResults() {
     //reset risultati
     let iconsSelected = [];
     main.innerHTML = "";
@@ -34,7 +47,8 @@ selectIcon.addEventListener("change", () => {
         //genero le icone
         printIcons(iconsSelected);
     }
-});
+};
+
 
 
 //generazione array con i type icon univoci
@@ -64,7 +78,7 @@ function uniqueType() {
 function print(iconName, iconPrefix, iconColor) {
     let iconBox = document.createElement("div");
     iconBox.classList.add("icon-box");
-    iconBox.innerHTML = `<i class="fa-solid ${iconPrefix}${iconName}" style="color: #${iconColor}"></i><p class="icon-name">${iconName}</p>`;
+    iconBox.innerHTML = `<i class="fa-solid ${iconPrefix}${iconName}" style="color: ${iconColor}"></i><p class="icon-name">${iconName}</p>`;
     main.appendChild(iconBox);
 }
 
@@ -89,7 +103,7 @@ function rndmColor() {
         newColor.push(digit);
     }
 
-    return newColor.join('');
+    return '#' + newColor.join('');
 }
 
 
