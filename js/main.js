@@ -28,7 +28,10 @@ function printIcons(icons) {
 //filtro sul menu a tendina
 selectIcon.addEventListener("change", filterResults);
 
+//modifica dei colori
 selectColor.addEventListener("change", filterResults);
+
+
 
 //filtro dei risultati
 function filterResults() {
@@ -53,13 +56,13 @@ function filterResults() {
 
 //generazione array con i type icon univoci
 function uniqueType() {
-    iconTypesUnique = iconsArr
+    const iconTypesUnique = iconsArr
         .map((icon) => {
             return icon.type;
         })
         .filter((element, index, array) => {
             return array.indexOf(element) == index;
-        });
+        });  
     
     //aggiungo la voce 'all' al menu a tendina
     iconTypesUnique.push("all");
